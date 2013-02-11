@@ -1,4 +1,4 @@
-# Explosives
+# Xplode
 
 Awesome browser based game involving explosions and monsters.
 
