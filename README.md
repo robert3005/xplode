@@ -8,5 +8,5 @@ More details to come.
 
 Gruntjs - build system
 require.js - dependency management
-box2d.js - physics engine
+cannon.js - physics engine
 three.js - graphics library
