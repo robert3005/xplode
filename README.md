@@ -6,7 +6,7 @@ More details to come.
 
 ## Tools
 
-Gruntjs - build system
-require.js - dependency management
-cannon.js - physics engine
-three.js - graphics library
+* Gruntjs - build system
+* require.js - dependency management
+* cannon.js - physics engine
+* three.js - graphics library
