@@ -86,6 +86,7 @@ module.exports = (grunt) ->
         clean:
             transpile: ["server/common", "client/common", "build"]
             build: ["build"]
+            release: ["web/js", "web/css", "web/fonts", "web/img"]
 
         regarde:
             server:
@@ -103,6 +104,18 @@ module.exports = (grunt) ->
             templates:
                 files: "client/templates/**/*.jade"
                 tasks: ["jade", "livereload"]
+            vendor:
+                files: "client/vendor/**"
+                tasks: ["copy", "livereload"]
+
+        copy:
+            vendor:
+                files: [{
+                    expand: true
+                    cwd: "client/vendor"
+                    src: ["**"]
+                    dest: "web/"
+                }]
 
     grunt.loadNpmTasks "grunt-coffeelint"
     #grunt.loadNpmTasks "grunt-buster"
@@ -114,8 +127,10 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks "grunt-contrib-less"
     grunt.loadNpmTasks "grunt-contrib-clean"
     grunt.loadNpmTasks "grunt-contrib-jade"
+    grunt.loadNpmTasks "grunt-contrib-copy"
+    grunt.loadNpmTasks "grunt-contrib-concat"
     grunt.loadNpmTasks "grunt-contrib-livereload"
 
-    grunt.registerTask "build", ["coffeelint", "transpile", "coffee", "less", "jade:development"]
+    grunt.registerTask "build", ["coffeelint", "transpile", "coffee", "less", "jade:development", "copy"]
     grunt.registerTask "reload", ["livereload-start", "regarde"]
     grunt.registerTask "default", ["bgShell"]
