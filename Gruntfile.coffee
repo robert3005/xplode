@@ -101,7 +101,10 @@ module.exports = (grunt) ->
             less:
                 files: "client/less/**/*.less"
                 tasks: ["less", "livereload"]
-            templates:
+            serverTemplates:
+                files: "server/views/**/*.jade"
+                tasks: ["livereload"]
+            clientTemplates:
                 files: "client/templates/**/*.jade"
                 tasks: ["jade", "livereload"]
             vendor:
