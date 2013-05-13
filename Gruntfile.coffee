@@ -13,7 +13,8 @@ module.exports = (grunt) ->
                     expand: true
                     cwd: "build/"
                     src: ["**/*.coffee"]
-                    dest: "web/js/"
+                    dest: "web/js/client/"
+                    ext: ".js"
                 }]
 
         less:
@@ -51,7 +52,6 @@ module.exports = (grunt) ->
                 type: "amd"
                 coffee: true
                 files: [{
-                    flatten: true
                     expand: true
                     cwd: 'client/'
                     src: ['**/*.coffee']
@@ -108,8 +108,11 @@ module.exports = (grunt) ->
                 files: "client/templates/**/*.jade"
                 tasks: ["jade", "livereload"]
             vendor:
-                files: "client/vendor/**"
-                tasks: ["copy", "livereload"]
+                files: "client/vendor/**/*.*"
+                tasks: ["copy:vendor", "livereload"]
+            requireRoot:
+                files: "client/app.js"
+                tasks: ["copy:requireConfig", "livereload"]
 
         copy:
             vendor:
@@ -118,6 +121,11 @@ module.exports = (grunt) ->
                     cwd: "client/vendor"
                     src: ["**"]
                     dest: "web/"
+                }]
+            requireConfig:
+                files: [{
+                    src: "client/app.js"
+                    dest: "web/js/app.js"
                 }]
 
     grunt.loadNpmTasks "grunt-coffeelint"
