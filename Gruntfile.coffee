@@ -2,8 +2,8 @@ module.exports = (grunt) ->
     grunt.initConfig
         coffeelint:
             options: grunt.file.readJSON "coffeelint.json"
-            server: ["server/!{common}/*.coffee"]
-            client: ["client/!{common}/*.coffee"]
+            server: ["server/!{common}/**/*.coffee"]
+            client: ["client/!{common}/**/*.coffee"]
 
         coffee:
             client:
